@@ -39,12 +39,7 @@ const createIncompleteList = (text) => {
 
   div.appendChild(completeButton);
 
-  const deleteButton = document.createElement("button");
-  deleteButton.innerText = "削除";
-  deleteButton.addEventListener("click", () => {
-    deleteFromList("incomplete-list", deleteButton.parentNode);
-  });
-
+  const deleteButton = createDeleteButton();
   div.appendChild(deleteButton);
 
   document.getElementById("incomplete-list").appendChild(div);
@@ -52,6 +47,16 @@ const createIncompleteList = (text) => {
 
 const deleteFromList = (listId, target) => {
   document.getElementById(listId).removeChild(target);
+};
+
+const createDeleteButton = () => {
+  const deleteButton = document.createElement("button");
+  deleteButton.innerText = "削除";
+  deleteButton.addEventListener("click", () => {
+    deleteFromList("incomplete-list", deleteButton.parentNode);
+  });
+
+  return deleteButton;
 };
 
 const createBackButton = () => {
