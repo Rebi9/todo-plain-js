@@ -18,7 +18,7 @@ const createIncompleteList = (text) => {
   completeButton.innerText = "完了";
   completeButton.id = "complete-button";
   completeButton.addEventListener("click", () => {
-    deleteFromIncompleteList(completeButton.parentNode);
+    deleteFromList("incomplete-list", completeButton.parentNode);
 
     const addTarget = completeButton.parentNode;
     const text = addTarget.firstElementChild.innerText;
@@ -30,8 +30,7 @@ const createIncompleteList = (text) => {
     const backButton = document.createElement("button");
     backButton.innerText = "戻す";
     backButton.addEventListener("click", () => {
-      const deleteTarget = backButton.parentNode;
-      document.getElementById("complete-list").removeChild(deleteTarget);
+      deleteFromList("complete-list", backButton.parentNode);
 
       const text = backButton.parentElement.firstElementChild.innerText;
       createIncompleteList(text);
@@ -46,7 +45,7 @@ const createIncompleteList = (text) => {
   const deleteButton = document.createElement("button");
   deleteButton.innerText = "削除";
   deleteButton.addEventListener("click", () => {
-    deleteFromIncompleteList(deleteButton.parentNode);
+    deleteFromList("incomplete-list", deleteButton.parentNode);
   });
 
   div.appendChild(li);
@@ -56,8 +55,8 @@ const createIncompleteList = (text) => {
   document.getElementById("incomplete-list").appendChild(div);
 };
 
-const deleteFromIncompleteList = (target) => {
-  document.getElementById("incomplete-list").removeChild(target);
+const deleteFromList = (listId, target) => {
+  document.getElementById(listId).removeChild(target);
 };
 
 document
