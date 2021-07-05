@@ -11,9 +11,7 @@ const createIncompleteList = (text) => {
   const div = document.createElement("div");
   div.className = "list-row";
 
-  const li = document.createElement("li");
-  li.innerText = text;
-  div.appendChild(li);
+  div.appendChild(createListItem(text));
 
   const completeButton = createCompleteButton();
   div.appendChild(completeButton);
@@ -34,10 +32,9 @@ const createCompleteButton = () => {
     const addTarget = document.createElement("div");
     addTarget.className = "list-row";
 
-    const li = document.createElement("li");
-    const text = completeButton.parentNode.firstElementChild.innerText;
-    li.innerText = text;
-    addTarget.appendChild(li);
+    addTarget.appendChild(
+      createListItem(completeButton.parentNode.firstElementChild.innerText)
+    );
 
     const backButton = createBackButton();
     addTarget.appendChild(backButton);
@@ -73,6 +70,12 @@ const createBackButton = () => {
 
 const deleteFromList = (listId, target) => {
   document.getElementById(listId).removeChild(target);
+};
+
+const createListItem = (innerText) => {
+  const li = document.createElement("li");
+  li.innerText = innerText;
+  return li;
 };
 
 document
