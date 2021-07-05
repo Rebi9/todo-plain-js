@@ -14,6 +14,8 @@ const createIncompleteList = (text) => {
   const li = document.createElement("li");
   li.innerText = text;
 
+  div.appendChild(li);
+
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
   completeButton.id = "complete-button";
@@ -35,14 +37,14 @@ const createIncompleteList = (text) => {
     document.getElementById("complete-list").appendChild(addTarget);
   });
 
+  div.appendChild(completeButton);
+
   const deleteButton = document.createElement("button");
   deleteButton.innerText = "削除";
   deleteButton.addEventListener("click", () => {
     deleteFromList("incomplete-list", deleteButton.parentNode);
   });
 
-  div.appendChild(li);
-  div.appendChild(completeButton);
   div.appendChild(deleteButton);
 
   document.getElementById("incomplete-list").appendChild(div);
