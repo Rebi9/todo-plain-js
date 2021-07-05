@@ -16,6 +16,20 @@ const createIncompleteList = (text) => {
 
   div.appendChild(li);
 
+  const completeButton = createCompleteButton();
+  div.appendChild(completeButton);
+
+  const deleteButton = createDeleteButton();
+  div.appendChild(deleteButton);
+
+  document.getElementById("incomplete-list").appendChild(div);
+};
+
+const deleteFromList = (listId, target) => {
+  document.getElementById(listId).removeChild(target);
+};
+
+const createCompleteButton = () => {
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
   completeButton.id = "complete-button";
@@ -37,16 +51,7 @@ const createIncompleteList = (text) => {
     document.getElementById("complete-list").appendChild(addTarget);
   });
 
-  div.appendChild(completeButton);
-
-  const deleteButton = createDeleteButton();
-  div.appendChild(deleteButton);
-
-  document.getElementById("incomplete-list").appendChild(div);
-};
-
-const deleteFromList = (listId, target) => {
-  document.getElementById(listId).removeChild(target);
+  return completeButton;
 };
 
 const createDeleteButton = () => {
