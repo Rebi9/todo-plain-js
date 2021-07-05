@@ -22,8 +22,12 @@ const createIncompleteList = (text) => {
 
     const text = completeButton.parentNode.firstElementChild.innerText;
 
+    const addTarget = document.createElement("div");
+    addTarget.className = "list-row";
+
     const li = document.createElement("li");
     li.innerText = text;
+    addTarget.appendChild(li);
 
     const backButton = document.createElement("button");
     backButton.innerText = "戻す";
@@ -33,10 +37,6 @@ const createIncompleteList = (text) => {
       const text = backButton.parentElement.firstElementChild.innerText;
       createIncompleteList(text);
     });
-
-    const addTarget = document.createElement("div");
-    addTarget.className = "list-row";
-    addTarget.appendChild(li);
     addTarget.appendChild(backButton);
 
     document.getElementById("complete-list").appendChild(addTarget);
