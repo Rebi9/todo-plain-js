@@ -20,9 +20,7 @@ const createIncompleteList = (text) => {
   completeButton.addEventListener("click", () => {
     deleteFromList("incomplete-list", completeButton.parentNode);
 
-    const addTarget = completeButton.parentNode;
-    const text = addTarget.firstElementChild.innerText;
-    addTarget.textContent = null;
+    const text = completeButton.parentNode.firstElementChild.innerText;
 
     const li = document.createElement("li");
     li.innerText = text;
@@ -36,6 +34,8 @@ const createIncompleteList = (text) => {
       createIncompleteList(text);
     });
 
+    const addTarget = document.createElement("div");
+    addTarget.className = "list-row";
     addTarget.appendChild(li);
     addTarget.appendChild(backButton);
 
